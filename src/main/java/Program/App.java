@@ -21,25 +21,11 @@ public class App {
         String tmp = "{\"ssn\":1605789787,\"creditScore\":598,\"loanAmount\":1000.0,\"loanDuration\":360}";
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject sayHi() {
-
-
-
-
-        BankJSON bankJSON = new BankJSON();
-        List<Object> temp = bankJSON.returnJSONBank(598, 10000.0, 5.0 );
-
-
-        JsonObject value = Json.createObjectBuilder()
-                .add("loanResponse", Json.createObjectBuilder()
-                .add("bankName", temp.get(0).toString())
-                .add("interestRate", temp.get(1).toString())
-                .add("refund", temp.get(2).toString()))
-                .build();
-
-
-        return value;
+    @Produces(MediaType.TEXT_HTML)
+    public String index() {
+        return "<h1> WELCOME TO THE JSON BANK </h1>\n " +
+                "<p>To use this bank application, you have to send a post request to:</p> \n" +
+                "<a> http://94.130.57.246:9000/bankjson/bank/interestrate </a>";
     }
 
     @POST
